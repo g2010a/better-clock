@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=650, user-scalable=yes">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+	
+	<!-- Logging -->
+	<script src="https://cdn.rawgit.com/jonnyreeves/js-logger/master/src/logger.min.js"></script>
+	<!-- Sunlight calculations -->
+	<script src="https://cdn.rawgit.com/mourner/suncalc/b08d1f6f/suncalc.js"></script>
+	<!-- Utilities -->
+	<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+	<!-- Clock -->
+	<script src="clock.js"></script>
+	
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+ 
+    <!-- link rel="stylesheet"  href="css/style.css"-->
+    <!-- move this into your css file -->
+	<style>
+body {
+  background: #fff;
+}
+
+svg{
+	stroke: #000;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+.second-tick{
+	stroke-width:3;
+	fill:#000;	
+}
+
+
+	</style>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Clock</h1>
+      </header>
+ 
+    </div>
+  </body>
+</html>

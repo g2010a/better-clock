@@ -1,0 +1,18 @@
+{
+  "name": "better-clock-test",
+  "homepage": "https://github.com/g2010a/better-clock",
+  "authors": [
+    "g2010a"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

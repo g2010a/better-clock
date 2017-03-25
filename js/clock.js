@@ -52,14 +52,14 @@
             var dayhours = SunCalc.getTimes(new Date(), args.longitude, args.latitude);
             logger.debug(dayhours);
             
-            var milestones = {
+            this.milestones = {
                 dayStart: moment(dayhours.sunrise),
                     // Day
-                dayEnd: moment(dayhours.sunset),
+                sunsetStart: moment(dayhours.sunset),
                     // Twilight
-                night: moment(dayhours.night),
+                nightStart: moment(dayhours.night),
                     // Pitch black
-                dawn: moment(dayhours.dawn),
+                dawnStart: moment(dayhours.dawn),
                     // Twilight
                 wakeupAt: args.wakeupAt,
                 sleepAt: args.sleepAt

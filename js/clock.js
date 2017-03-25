@@ -25,10 +25,30 @@
             _.defaults(args, DEFAULT_ARGS);
             this.args = args;
 
-			if (this.args.longitude > 90 || this.args.longitude < -90) {
-				throw new Error('Longitude exceeds limits [-90,90]');
-			}
-                
+            if (this.args.longitude > 90 || this.args.longitude < -90) {
+                throw new Error('Longitude exceeds limits [-90,90]');
+            }
+
+            if (this.args.latitude > 90 || this.args.latitude < -90) {
+                throw new Error('Latitude exceeds limits [-90,90]');
+            }
+
+            if (this.args.wakeupAt > 2359 || this.args.wakeupAt < 0) {
+                throw new Error('WakeupAt not in 24h time range [0 - 2359]');
+            }
+
+            if (this.args.wakeupAt.toString().slice(-2)*1 > 59) {
+                throw new Error('WakeupAt contains too many minutes');
+            }
+
+            if (this.args.sleepAt > 2359 || this.args.sleepAt < 0) {
+                throw new Error('SleepAt not in 24h time range [0 - 2359]');
+            }
+
+            if (this.args.sleepAt.toString().slice(-2)*1 > 59) {
+                throw new Error('SleepAt contains too many minutes');
+            }
+
             var dayhours = SunCalc.getTimes(new Date(), args.longitude, args.latitude);
             logger.debug(dayhours);
             

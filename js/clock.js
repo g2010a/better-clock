@@ -23,7 +23,11 @@
             };
             
             _.defaults(args, DEFAULT_ARGS);
-            this.args = args
+            this.args = args;
+
+			if (this.args.longitude > 90 || this.args.longitude < -90) {
+				throw new Error('Longitude exceeds limits [-90,90]');
+			}
                 
             var dayhours = SunCalc.getTimes(new Date(), args.longitude, args.latitude);
             logger.debug(dayhours);

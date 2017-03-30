@@ -43,4 +43,9 @@ describe('Validate arguments', function() {
         expect(() => new BetterClock({ sleepAt: 160 })).to.throw('SleepAt contains too many minutes');
         expect(() => new BetterClock({ sleepAt: 2275 })).to.throw('SleepAt contains too many minutes');
     });
+
+    it('throws error if date is invalid', function() {
+        expect(() => new BetterClock({ date: '!@#%AS'.to.throw('date is invalid')}));
+        expect(() => new BetterClock({ date: '13211-01-01'.to.throw('date is invalid')}));
+    });
 });

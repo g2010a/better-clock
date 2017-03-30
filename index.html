@@ -14,6 +14,7 @@
     <!-- Utilities -->
     <script src="libs/lodash.min.js"></script>
     <script src="libs/moment.min.js"></script>
+    <script src="libs/store.modern.min.js"></script>
     <!-- Clock -->
     <script src="js/clock.js"></script>
     
@@ -28,32 +29,35 @@ body {
   background: #fff;
 }
 
-svg{
-  stroke: #000;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+svg#clock{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-.second-tick{
-  stroke-width:3;
-  fill:#000;
-}
+
+/* Colors inspired by http://www.colourlovers.com/palette/1365752/day_cycle */
+g.sunrise path { fill: #5EA2AB; }
+g.day path { fill: #E0D569; }
+g.sunset path { fill: #638C91; }
+g.night path { fill: #252626; }
     </style>
 
-  <script type="text/javascript">
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>A better clock</h1>
+      </header>
+      <svg id="clock" width=400 height=400></svg>
+    </div>
+  </body>
+
+<script type="text/javascript">
 var clock = new BetterClock({
   longitude: 53.5511,
   latitude: 9.9937,
   wakeupAt: 600,
   sleepAt: 2300
 });
-  </script>
+clock.render();
+</script>
 
-  </head>
-  <body>
-    <div id="container">
-      <header>
-        <h1>Clock</h1>
-      </header>
- 
-    </div>
-  </body>
 </html>

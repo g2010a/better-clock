@@ -14,6 +14,37 @@ describe('Validate arguments', function() {
         sandbox.restore();
     });
 
+    it('sets defaults if arguments are provided as "null"', function() {
+        var timeMachine = sinon.useFakeTimers(new Date(2015,10,21).getTime());
+
+        let inputs = {
+            longitude: null,
+            latitude: null,
+            wakeupAt: null,
+            sleepAt: null,
+            date: null,
+            openWeatherAPIToken: null
+        };
+
+        let expected = {
+            date: "2015-10-21",
+            longitude: 0,
+            latitude: 0,
+            wakeupAt: 630,
+            sleepAt: 2230,
+            openWeatherAPIToken: null
+        }
+        let clock = new BetterClock(inputs);
+        expect(clock.args).to.have.property('longitude', 0);
+        expect(clock.args).to.have.property('latitude', 0);
+        expect(clock.args).to.have.property('wakeupAt', 630);
+        expect(clock.args).to.have.property('sleepAt', 2230);
+        expect(clock.args).to.have.property('original_date', (new Date()).toISOString().slice(0,10));
+        expect(clock.args).to.have.property('openWeatherAPIToken', null);
+        expect(clock.args.date).to.deep.equal(moment((new Date()).toISOString().slice(0,10)));
+        timeMachine.restore();
+    });
+
     it('throws error if longitude is not within -90 <-> +90', function() {
         expect(() => new BetterClock({ longitude: 91 })).to.throw('Longitude exceeds limits [-90,90]');
         expect(() => new BetterClock({ longitude: -91 })).to.throw('Longitude exceeds limits [-90,90]');

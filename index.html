@@ -51,12 +51,17 @@ g.night path { fill: #252626; }
   </body>
 
 <script type="text/javascript">
+var queryParams = new URLSearchParams(window.location.search);
+
 var clock = new BetterClock({
-  longitude: 53.5511,
-  latitude: 9.9937,
-  wakeupAt: 600,
-  sleepAt: 2300
+  date: queryParams.get("date"), // 1999-03-28
+  longitude: queryParams.get("longitude"), // 53.5511
+  latitude: queryParams.get("latitude"), // 9.9937,
+  wakeupAt: queryParams.get("wakeupAt"), // 600,
+  sleepAt: queryParams.get("sleepAt"), // 2300
+  openWeatherAPIToken: queryParams.get("openWeatherAPIToken")
 });
+
 clock.render();
 </script>
 
